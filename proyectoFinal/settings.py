@@ -121,3 +121,5 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'agendamientoCitas/static')
 ]
+
+ALLOWED_HOSTS = ['localhost','web-production-800e9.up.railway.app']
