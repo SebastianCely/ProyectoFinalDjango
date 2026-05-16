@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views import generic
 
-def render_citas(request):
-    return render(request, 'citas.html')
+
+def render_index_view(request):
+    return render(request, 'index.html')
