@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from . forms import DoctorForm
 from . forms import PacienteForm
@@ -35,3 +35,14 @@ def render_registrar_paciente(request):
     else:
         form = PacienteForm()
     return render(request, 'registrar_paciente.html', {'form':form, 'pacientes': pacientes})
+
+def render_editar_paciente(request, id):
+    paciente = get_object_or_404(Paciente, id = id)
+    if request.method == 'POST':
+        form = PacienteForm(request.POST, instance=paciente)
+        if form.is_valid():
+            form.save()
+            return redirect('/citas/registrar_paciente')
+    else:
+        form = PacienteForm(instance=paciente)
+    return render(request, 'editar_info_paciente.html', {'form': form, 'paciente': paciente})

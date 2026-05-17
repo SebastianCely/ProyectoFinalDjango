@@ -43,6 +43,7 @@
         <th>Teléfono</th>
         <th>Correo electrónico</th>
         <th>Dirección de residencia</th>
+        <th>Opciones</th>
     </tr>
     {% for paciente in pacientes %}
     <tr>
@@ -53,6 +54,7 @@
         <td>{{paciente.telefono}}</td>
         <td>{{paciente.email}}</td>
         <td>{{paciente.direccion}}</td>
+        <td><a href="{% url 'editarpaciente' paciente.id%}">Editar</a></td>
     </tr>
     {% endfor %}
 </table>
