@@ -1,0 +1,35 @@
+<form method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        <legend><h2>Registro de Doctor</h2></legend>
+
+        <label for="primer_apellido">Primer apellido:</label><br>
+        <input type="text" id="primer_apellido" name="primer_apellido" required><br><br>
+
+        <label for="segundo_apellido">Segundo apellido:</label><br>
+        <input type="text" id="segundo_apellido" name="segundo_apellido"><br><br>
+
+        <label for="primer_nombre">Primer nombre:</label><br>
+        <input type="text" id="primer_nombre" name="primer_nombre" required><br><br>
+
+        <label for="segundo_nombre">Segundo nombre:</label><br>
+        <input type="text" id="segundo_nombre" name="segundo_nombre"><br><br>
+
+        <label>Tipos de cita que atiende:</label><br>
+
+        {% for tipo in tipos_cita %}
+            <input type="checkbox"
+                   name="tipos_cita"
+                   value="{{ tipo.id }}"
+                   id="tipo{{ tipo.id }}">
+            <label for="tipo{{ tipo.id }}">
+                {{ tipo.nombre }}
+            </label><br>
+        {% endfor %}
+
+    </fieldset>
+
+    <br>
+    <input type="submit" value="Registrar Doctor">
+</form>
