@@ -33,3 +33,20 @@
     <br>
     <input type="submit" value="Registrar Doctor">
 </form>
+
+<table border="1">
+    <tr>
+        <th>Primer Nombre</th>
+        <th>Segundo Nombre</th>
+        <th>Primer Apellido</th>
+        <th>Segundo Apellido</th>
+    </tr>
+    {% for doctor in doctores %}
+    <tr>
+        <td>{{doctor.primer_nombre}}</td>
+        <td>{{doctor.segundo_nombre}}</td>
+        <td>{{doctor.primer_apellido}}</td>
+        <td>{{doctor.segundo_apellido}}</td>
+    </tr>
+    {% endfor %}
+</table>

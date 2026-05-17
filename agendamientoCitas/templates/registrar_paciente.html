@@ -1,0 +1,58 @@
+<form method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        <legend><h2>Registro de Pacientes</h2></legend>
+
+        <label for="numero_identificacion">Identificación:</label><br>
+        <input type="number" id="numero_identificacion" name="numero_identificacion" required><br><br>
+
+        <label for="primer_apellido">Primer apellido:</label><br>
+        <input type="text" id="primer_apellido" name="primer_apellido" required><br><br>
+
+        <label for="segundo_apellido">Segundo apellido:</label><br>
+        <input type="text" id="segundo_apellido" name="segundo_apellido"><br><br>
+
+        <label for="primer_nombre">Primer nombre:</label><br>
+        <input type="text" id="primer_nombre" name="primer_nombre" required><br><br>
+
+        <label for="segundo_nombre">Segundo nombre:</label><br>
+        <input type="text" id="segundo_nombre" name="segundo_nombre"><br><br>
+
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" id="telefono" name="telefono" pattern="\+?[0-9\s\-]{7,15}" required><br><br>
+
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="direccion">Dirección de residencia:</label><br>
+        <input type="text" id="direccion" name="direccion" required><br><br>
+
+    </fieldset>
+
+    <br>
+    <input type="submit" value="Registrar Paciente">
+</form>
+
+<table border="1">
+    <tr>
+        <th>Primer Nombre</th>
+        <th>Segundo Nombre</th>
+        <th>Primer Apellido</th>
+        <th>Segundo Apellido</th>
+        <th>Teléfono</th>
+        <th>Correo electrónico</th>
+        <th>Dirección de residencia</th>
+    </tr>
+    {% for paciente in pacientes %}
+    <tr>
+        <td>{{paciente.primer_nombre}}</td>
+        <td>{{paciente.segundo_nombre}}</td>
+        <td>{{paciente.primer_apellido}}</td>
+        <td>{{paciente.segundo_apellido}}</td>
+        <td>{{paciente.telefono}}</td>
+        <td>{{paciente.email}}</td>
+        <td>{{paciente.direccion}}</td>
+    </tr>
+    {% endfor %}
+</table>
