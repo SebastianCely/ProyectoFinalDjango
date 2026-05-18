@@ -14,7 +14,7 @@
             </tr>
             {% for dato in cita %}
             <tr>
-                <td>{{dato.paciente.primer_nombre}} {{dato.paciente.primer_nombre}} {{dato.paciente.segundo_nombre|default_if_none:''}}</td>
+                <td>{{dato.paciente.primer_nombre}} {{dato.paciente.segundo_nombre|default_if_none:''}} {{dato.paciente.primer_apellido}} {{dato.paciente.segundo_apellido|default_if_none:''}}</td>
                 <td>{{dato.tipo_cita.nombre}}</td>
                 <td>{{dato.doctor.primer_nombre}} {{dato.doctor.segundo_nombre|default_if_none:''}} {{dato.doctor.primer_apellido|default_if_none:''}} {{dato.doctor.segundo_apellido|default_if_none:''}}</td>
                 <td>{{dato.fecha}}</td>

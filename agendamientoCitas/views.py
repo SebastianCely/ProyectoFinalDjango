@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import generic
+from django.views.generic import ListView
 from . forms import DoctorForm
 from . forms import PacienteForm
 from . forms import CitaForm
@@ -63,9 +63,13 @@ def render_registrar_cita(request):
         form = CitaForm()
     return render(request, 'registrar_cita.html', {'form': form, 'paciente': paciente, 'doctor': doctor, 'tipo_cita': tipo_cita})
 
-def render_listar_citas(request):
-    cita = Cita.objects.all()
-    return render(request, 'listado_citas.html', {'cita': cita})
+#def render_listar_citas(request):
+    #cita = Cita.objects.all()
+    #return render(request, 'listado_citas.html', {'cita': cita})
+class ListarCitasView(ListView):
+    model = Cita
+    template_name = 'listado_citas.html'
+    context_object_name = 'cita'
 
 def render_editar_cita(request, id):
     dato = get_object_or_404(Cita, id=id)
