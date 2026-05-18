@@ -15,19 +15,6 @@
 
         <label for="segundo_nombre">Segundo nombre:</label><br>
         <input type="text" id="segundo_nombre" name="segundo_nombre"><br><br>
-
-        <label>Tipos de cita que atiende:</label><br>
-
-        {% for tipo in tipos_cita %}
-            <input type="checkbox"
-                   name="tipos_cita"
-                   value="{{ tipo.id }}"
-                   id="tipo{{ tipo.id }}">
-            <label for="tipo{{ tipo.id }}">
-                {{ tipo.nombre }}
-            </label><br>
-        {% endfor %}
-
     </fieldset>
 
     <br>

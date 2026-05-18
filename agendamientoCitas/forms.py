@@ -1,6 +1,7 @@
 from django import forms
 from . models import Doctor
 from . models import Paciente
+from . models import Cita
 
 class DoctorForm(forms.ModelForm):
     class Meta:
@@ -10,7 +11,6 @@ class DoctorForm(forms.ModelForm):
             'segundo_apellido',
             'primer_nombre',
             'segundo_nombre',
-            'tipos_cita',
         ]
 
 class PacienteForm(forms.ModelForm):
@@ -26,3 +26,14 @@ class PacienteForm(forms.ModelForm):
             'email',
             'direccion',
         ]
+
+class CitaForm(forms.ModelForm):
+    class Meta:
+        model = Cita
+        fields = [
+            'paciente',
+            'tipo_cita',
+            'doctor',
+            'fecha',
+        ]
+

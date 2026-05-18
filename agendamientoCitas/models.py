@@ -9,7 +9,6 @@ class Doctor(models.Model):
     segundo_apellido = models.CharField(max_length=15, null=True, blank=True)
     primer_nombre = models.CharField(max_length=15)
     segundo_nombre = models.CharField(max_length=15, null=True, blank=True)
-    tipos_cita = models.ManyToManyField(TipoCita, related_name='doctores')
 
 
 class Paciente(models.Model):
@@ -26,4 +25,8 @@ class Paciente(models.Model):
 class Cita(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     tipo_cita = models.ForeignKey(TipoCita, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     fecha = models.DateField()
+
+    class Meta:
+        unique_together = ('paciente', 'tipo_cita')

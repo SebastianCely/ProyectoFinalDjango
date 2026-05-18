@@ -1,0 +1,68 @@
+<form method="post">
+    {% csrf_token %}
+    
+
+    <fieldset>
+        <legend><h2>Editar información de pacientes</h2></legend>
+
+        <label for="numero_identificacion">Paciente:</label><br>
+        
+        <select disabled>
+            {% for cliente in pacientes %}
+                <option value="{{ cliente.id }}"
+                    {% if cliente.id == dato.paciente.id %}selected{% endif %}>
+            
+                        {{ cliente.primer_nombre }}
+                        {{ cliente.segundo_nombre|default_if_none:'' }}
+                        {{ cliente.primer_apellido }}
+                        {{ cliente.segundo_apellido|default_if_none:'' }}
+
+                </option>
+            {% endfor %}
+        </select>
+        <input type="hidden" name="paciente" value="{{ dato.paciente.id }}">
+        <br><br>
+
+
+        
+        <label>Cita solicitada:</label><br>
+        <select name="tipo_cita" required>
+            {% for cita in tipos_cita %}
+                <option value="{{ cita.id }}"
+                    {% if cita.id == dato.tipo_cita.id %}selected{% endif %}>
+                    {{ cita.nombre }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+        
+        {% if form.data.tipo_cita %}
+            <p><strong>Mostrando doctores disponibles</strong></p>
+        {% endif %}
+
+
+
+        
+        <label>Doctor:</label><br>
+        <select name="doctor" required>
+            {% for doctor in doctores %}
+                <option value="{{ doctor.id }}"
+                    {% if doctor.id == dato.doctor.id %}selected{% endif %}>
+                    {{ doctor.primer_nombre }} {{ doctor.primer_apellido }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+
+        
+        <label>Fecha:</label><br>
+        <input type="date" 
+               name="fecha" 
+               value="{{ dato.fecha|date:'Y-m-d' }}" 
+               required><br><br>
+
+
+    </fieldset>
+
+    <br>
+    <input type="submit" value="Modificar Paciente">
+</form>
