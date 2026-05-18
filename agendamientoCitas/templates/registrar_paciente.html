@@ -1,38 +1,20 @@
-<form method="post">
-    {% csrf_token %}
-
-    <fieldset>
-        <legend><h2>Registro de Pacientes</h2></legend>
-
-        <label for="numero_identificacion">Identificación:</label><br>
-        <input type="number" id="numero_identificacion" name="numero_identificacion" required><br><br>
-
-        <label for="primer_apellido">Primer apellido:</label><br>
-        <input type="text" id="primer_apellido" name="primer_apellido" required><br><br>
-
-        <label for="segundo_apellido">Segundo apellido:</label><br>
-        <input type="text" id="segundo_apellido" name="segundo_apellido"><br><br>
-
-        <label for="primer_nombre">Primer nombre:</label><br>
-        <input type="text" id="primer_nombre" name="primer_nombre" required><br><br>
-
-        <label for="segundo_nombre">Segundo nombre:</label><br>
-        <input type="text" id="segundo_nombre" name="segundo_nombre"><br><br>
-
-        <label for="telefono">Teléfono:</label><br>
-        <input type="tel" id="telefono" name="telefono" pattern="\+?[0-9\s\-]{7,15}" required><br><br>
-
-        <label for="email">Correo electrónico:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="direccion">Dirección de residencia:</label><br>
-        <input type="text" id="direccion" name="direccion" required><br><br>
-
-    </fieldset>
-
-    <br>
-    <input type="submit" value="Registrar Paciente">
-</form>
+{% extends 'base.html' %}
+{% block content %}
+<section class="form-register">
+    <form method="post">
+        {% csrf_token %}
+        <h4>Registrar Paciente</h4>
+        <input class="controls" type="number" id="numero_identificacion" name="numero_identificacion" placeholder="Ingrese un número de identificación" required>
+        <input class="controls" type="text" id="primer_apellido" name="primer_apellido" placeholder="Ingrese el primer apellido" required>
+        <input class="controls" type="text" id="segundo_apellido" name="segundo_apellido" placeholder="Ingrese el segundo apellido">
+        <input class="controls" type="text" id="primer_nombre" name="primer_nombre" placeholder="Ingrese el primer nombre" required>
+        <input class="controls" type="text" id="segundo_nombre" name="segundo_nombre" placeholder="Ingrese el segundo nombre">
+        <input class="controls" type="tel" id="telefono" name="telefono" pattern="\+?[0-9\s\-]{7,15}" placeholder="Ingrese el teléfono" required>
+        <input class="controls" type="email" id="email" name="email" placeholder="Ingrese el correo electrónico" required>
+        <input class="controls" type="text" id="direccion" name="direccion" placeholder="Ingrese la dirección de residencia" required>
+        <input class="botons" type="submit" value="Registrar Paciente">
+    </form>
+</section>
 
 <table border="1">
     <tr>
@@ -58,3 +40,4 @@
     </tr>
     {% endfor %}
 </table>
+{% endblock %}
