@@ -1,36 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="form-register">
-    <form method="post">
-        {% csrf_token %}
-        <h4>Registrar cita</h4>
-        <select class="controls" name="paciente" required>
-            <option value="" disabled selected>Seleccione el paciente</option>
-            {% for cliente in paciente %}
-            <option value="{{cliente.id}}">
-                {{cliente.primer_nombre}} {{cliente.segundo_nombre|default_if_none:''}} {{cliente.primer_apellido}}
-                {{cliente.segundo_apellido|default_if_none:''}}
-            </option>
-            {% endfor %}
-        </select>
-        <select class="controls" name="tipo_cita" required>
-            <option value="" disabled selected>Seleccione el tipo de cita</option>
-            {% for cita in tipo_cita %}
-            <option value="{{cita.id}}">{{cita.nombre}}
-            </option>
-            {% endfor %}
-        </select>
-        <select class="controls" name="doctor" required>
-            <option value="" disabled selected>Seleccione al doctor</option>
-            {% for doc in doctor %}
-            <option value="{{doc.id}}">
-                {{doc.primer_nombre}} {{doc.segundo_nombre|default_if_none:''}} {{doc.primer_apellido}}
-                {{doc.segundo_nombre|default_if_none:''}}
-            </option>
-            {% endfor %}
-        </select>
-        <input class="controls" type="date" name="fecha" required>
-        <input class="botons" type="submit" value="Registrar Cita">
-    </form>
-</section>
+
+<div class="container mt-5 pt-5 d-flex justify-content-center">
+
+    <section class="form-register">
+        <form method="post">
+            {% csrf_token %}
+            <h4>Registrar Cita</h4>
+
+            <div class="form-grid">
+
+                <select class="controls" name="paciente" required>
+                    <option value="" disabled selected>Seleccione el paciente</option>
+                    {% for cliente in paciente %}
+                    <option value="{{cliente.id}}">
+                        {{cliente.primer_nombre}} {{cliente.segundo_nombre|default_if_none:''}}
+                        {{cliente.primer_apellido}} {{cliente.segundo_apellido|default_if_none:''}}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <select class="controls" name="tipo_cita" required>
+                    <option value="" disabled selected>Seleccione el tipo de cita</option>
+                    {% for cita in tipo_cita %}
+                    <option value="{{cita.id}}">{{cita.nombre}}</option>
+                    {% endfor %}
+                </select>
+
+                <select class="controls" name="doctor" required>
+                    <option value="" disabled selected>Seleccione al doctor</option>
+                    {% for doc in doctor %}
+                    <option value="{{doc.id}}">
+                        {{doc.primer_nombre}} {{doc.segundo_nombre|default_if_none:''}}
+                        {{doc.primer_apellido}} {{doc.segundo_apellido|default_if_none:''}}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <input class="controls" type="date" name="fecha" required>
+
+            </div>
+
+            <input class="botons" type="submit" value="Registrar Cita">
+        </form>
+    </section>
+
+</div>
+
 {% endblock %}

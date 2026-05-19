@@ -1,43 +1,65 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="form-register">
-    <form method="post">
-        {% csrf_token %}
-        <h4>Registrar Paciente</h4>
-        <input class="controls" type="number" id="numero_identificacion" name="numero_identificacion" placeholder="Ingrese un número de identificación" required>
-        <input class="controls" type="text" id="primer_apellido" name="primer_apellido" placeholder="Ingrese el primer apellido" required>
-        <input class="controls" type="text" id="segundo_apellido" name="segundo_apellido" placeholder="Ingrese el segundo apellido">
-        <input class="controls" type="text" id="primer_nombre" name="primer_nombre" placeholder="Ingrese el primer nombre" required>
-        <input class="controls" type="text" id="segundo_nombre" name="segundo_nombre" placeholder="Ingrese el segundo nombre">
-        <input class="controls" type="tel" id="telefono" name="telefono" pattern="\+?[0-9\s\-]{7,15}" placeholder="Ingrese el teléfono" required>
-        <input class="controls" type="email" id="email" name="email" placeholder="Ingrese el correo electrónico" required>
-        <input class="controls" type="text" id="direccion" name="direccion" placeholder="Ingrese la dirección de residencia" required>
-        <input class="botons" type="submit" value="Registrar Paciente">
-    </form>
-</section>
+<div class="container-fluid mt-5 pt-5">
+    <div class="row align-items-start">
+        <div class="col-md-4">
+            <section class="form-register">
+                <form method="post">
+                    {% csrf_token %}
+                    <h4>Registrar Paciente</h4>
+                    <div class="form-grid">
+                        <input class="controls" type="number" name="numero_identificacion"
+                            placeholder="Número de identificación" required>
+                        <input class="controls" type="text" name="primer_apellido" placeholder="Primer apellido"
+                            required>
+                        <input class="controls" type="text" name="segundo_apellido" placeholder="Segundo apellido">
+                        <input class="controls" type="text" name="primer_nombre" placeholder="Primer nombre" required>
+                        <input class="controls" type="text" name="segundo_nombre" placeholder="Segundo nombre">
+                        <input class="controls" type="tel" name="telefono" placeholder="Teléfono" required>
+                        <input class="controls" type="email" name="email" placeholder="Correo electrónico" required>
+                        <input class="controls" type="text" name="direccion" placeholder="Dirección" required>
+                    </div>
+                    <input class="botons" type="submit" value="Registrar Paciente">
+                </form>
+            </section>
+        </div>
+        <div class="col-md-8">
+            <div class="container-table">
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>Primer Nombre</th>
+                            <th>Segundo Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Dirección</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for paciente in pacientes %}
+                        <tr>
+                            <td>{{paciente.primer_nombre}}</td>
+                            <td>{{paciente.segundo_nombre}}</td>
+                            <td>{{paciente.primer_apellido}}</td>
+                            <td>{{paciente.segundo_apellido}}</td>
+                            <td>{{paciente.telefono}}</td>
+                            <td>{{paciente.email}}</td>
+                            <td>{{paciente.direccion}}</td>
+                            <td>
+                                <a href="{% url 'editarpaciente' paciente.id %}" class="btn btn-sm btn-warning">
+                                    Editar
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table border="1">
-    <tr>
-        <th>Primer Nombre</th>
-        <th>Segundo Nombre</th>
-        <th>Primer Apellido</th>
-        <th>Segundo Apellido</th>
-        <th>Teléfono</th>
-        <th>Correo electrónico</th>
-        <th>Dirección de residencia</th>
-        <th>Opciones</th>
-    </tr>
-    {% for paciente in pacientes %}
-    <tr>
-        <td>{{paciente.primer_nombre}}</td>
-        <td>{{paciente.segundo_nombre}}</td>
-        <td>{{paciente.primer_apellido}}</td>
-        <td>{{paciente.segundo_apellido}}</td>
-        <td>{{paciente.telefono}}</td>
-        <td>{{paciente.email}}</td>
-        <td>{{paciente.direccion}}</td>
-        <td><a href="{% url 'editarpaciente' paciente.id%}">Editar</a></td>
-    </tr>
-    {% endfor %}
-</table>
 {% endblock %}

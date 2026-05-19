@@ -17,10 +17,11 @@
 
 body {
   font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--black);
+  background-color: var(--black) !important;
   color: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 100px;
 }
 
 h1,
@@ -44,7 +45,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.8) 100%);
+  background: linear-gradient(180deg, #0d6efd 0%, rgba(10, 10, 10, 0.8) 100%);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
@@ -128,11 +129,11 @@ nav {
 }
 
 .form-register {
-  width: 400px;
+  width: 100%;
+  margin: 0;
+  min-height: 500px;
   background: #24303c;
   padding: 30px;
-  margin: auto;
-  margin-top: 100px;
   border-radius: 4px;
   font-family: 'calibri';
   color: white;
@@ -164,4 +165,65 @@ nav {
   color: white;
   margin: 16px 0;
   font-size: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-grid .controls {
+  width: 100%;
+}
+
+.container-table {
+  width: 100%;
+  background: #24303c;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.controls[readonly] {
+  background-color: #1a252f;
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+
+.title-home {
+  font-size: 40px;
+  color: white;
+}
+
+.subtitle-home {
+  color: #A8A8A8;
+}
+
+.card-home {
+  background: #438bd3;
+  padding: 25px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 7px 13px 37px #000;
+  transition: transform 0.3s ease;
+}
+
+.card-home:hover {
+  transform: translateY(-5px);
+}
+
+
+.btn-home {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #1f53c5;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-home:hover {
+  background: #163c8f;
 }

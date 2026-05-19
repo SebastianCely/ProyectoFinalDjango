@@ -1,5 +1,55 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>Pagina index</h1>
+
+<div class="container mt-5 pt-5">
+
+    <!-- TÍTULO -->
+    <div class="text-center mb-5">
+        <h1 class="title-home">Sistema de Gestión Clínica FORGE</h1>
+        <p class="subtitle-home">Administra pacientes, doctores y citas de forma eficiente</p>
+    </div>
+
+    <!-- TARJETAS -->
+    <div class="row g-4">
+
+        <!-- PACIENTES -->
+        <div class="col-md-3">
+            <div class="card-home">
+                <h4>Pacientes</h4>
+                <p>Registrar y gestionar información de pacientes</p>
+                <a href="/citas/registrar_paciente" class="btn-home">Ir</a>
+            </div>
+        </div>
+
+        <!-- DOCTORES -->
+        <div class="col-md-3">
+            <div class="card-home">
+                <h4>Doctores</h4>
+                <p>Administrar información de los doctores</p>
+                <a href="registrar_doctor/" class="btn-home">Ir</a>
+            </div>
+        </div>
+
+        <!-- CITAS -->
+        <div class="col-md-3">
+            <div class="card-home">
+                <h4>Registrar Cita</h4>
+                <p>Programar nuevas citas médicas</p>
+                <a href="registrar_cita/" class="btn-home">Ir</a>
+            </div>
+        </div>
+
+        <!-- LISTADO -->
+        <div class="col-md-3">
+            <div class="card-home">
+                <h4>Citas Registradas</h4>
+                <p>Ver y gestionar todas las citas</p>
+                <a href="listado_citas/" class="btn-home">Ir</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

@@ -1,37 +1,47 @@
-<form method="post">
-    {% csrf_token %}
-    
+{% extends 'base.html' %}
+{% block content %}
 
-    <fieldset>
-        <legend><h2>Editar información de pacientes</h2></legend>
+<div class="container mt-5 pt-5 d-flex justify-content-center">
 
-        <label for="numero_identificacion">Identificación:</label><br>
-        <input type="number" id="numero_identificacion" name="numero_identificacion" value="{{paciente.numero_identificacion}}" readonly><br><br>
-        
+    <section class="form-register">
+        <form method="post">
+            {% csrf_token %}
 
-        <label for="primer_apellido">Primer apellido:</label><br>
-        <input type="text" id="primer_apellido" name="primer_apellido" value="{{paciente.primer_apellido}}" readonly><br><br>
+            <h4>Editar Información de Paciente</h4>
 
-        <label for="segundo_apellido">Segundo apellido:</label><br>
-        <input type="text" id="segundo_apellido" name="segundo_apellido" value="{{paciente.segundo_apellido}}" readonly><br><br>
+            <div class="form-grid">
 
-        <label for="primer_nombre">Primer nombre:</label><br>
-        <input type="text" id="primer_nombre" name="primer_nombre" value="{{paciente.primer_nombre}}" readonly><br><br>
+                <input class="controls" type="number" name="numero_identificacion"
+                    value="{{paciente.numero_identificacion}}" readonly>
 
-        <label for="segundo_nombre">Segundo nombre:</label><br>
-        <input type="text" id="segundo_nombre" name="segundo_nombre" value="{{paciente.segundo_nombre}}" readonly><br><br>
+                <input class="controls" type="text" name="primer_apellido"
+                    value="{{paciente.primer_apellido}}" readonly>
 
-        <label for="telefono">Teléfono:</label><br>
-        <input type="tel" id="telefono" name="telefono" pattern="\+?[0-9\s\-]{7,15}" value="{{paciente.telefono}}" required><br><br>
+                <input class="controls" type="text" name="segundo_apellido"
+                    value="{{paciente.segundo_apellido}}" readonly>
 
-        <label for="email">Correo electrónico:</label><br>
-        <input type="email" id="email" name="email" value="{{paciente.email}}" required><br><br>
+                <input class="controls" type="text" name="primer_nombre"
+                    value="{{paciente.primer_nombre}}" readonly>
 
-        <label for="direccion">Dirección de residencia:</label><br>
-        <input type="text" id="direccion" name="direccion" value="{{paciente.direccion}}" required><br><br>
+                <input class="controls" type="text" name="segundo_nombre"
+                    value="{{paciente.segundo_nombre}}" readonly>
 
-    </fieldset>
+                <input class="controls" type="tel" name="telefono"
+                    value="{{paciente.telefono}}" required>
 
-    <br>
-    <input type="submit" value="Modificar Paciente">
-</form>
+                <input class="controls" type="email" name="email"
+                    value="{{paciente.email}}" required>
+
+                <input class="controls" type="text" name="direccion"
+                    value="{{paciente.direccion}}" required>
+
+            </div>
+
+            <input class="botons" type="submit" value="Modificar Paciente">
+
+        </form>
+    </section>
+
+</div>
+
+{% endblock %}

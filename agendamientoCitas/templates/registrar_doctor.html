@@ -1,42 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="post">
-    {% csrf_token %}
 
-    <fieldset>
-        <legend><h2>Registro de Doctor</h2></legend>
-
-        <label for="primer_apellido">Primer apellido:</label><br>
-        <input type="text" id="primer_apellido" name="primer_apellido" required><br><br>
-
-        <label for="segundo_apellido">Segundo apellido:</label><br>
-        <input type="text" id="segundo_apellido" name="segundo_apellido"><br><br>
-
-        <label for="primer_nombre">Primer nombre:</label><br>
-        <input type="text" id="primer_nombre" name="primer_nombre" required><br><br>
-
-        <label for="segundo_nombre">Segundo nombre:</label><br>
-        <input type="text" id="segundo_nombre" name="segundo_nombre"><br><br>
-    </fieldset>
-
-    <br>
-    <input type="submit" value="Registrar Doctor">
-</form>
-
-<table border="1">
-    <tr>
-        <th>Primer Nombre</th>
-        <th>Segundo Nombre</th>
-        <th>Primer Apellido</th>
-        <th>Segundo Apellido</th>
-    </tr>
-    {% for doctor in doctores %}
-    <tr>
-        <td>{{doctor.primer_nombre}}</td>
-        <td>{{doctor.segundo_nombre}}</td>
-        <td>{{doctor.primer_apellido}}</td>
-        <td>{{doctor.segundo_apellido}}</td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container-fluid mt-5 pt-5">
+    <div class="row align-items-stretch">
+        <div class="col-md-4">
+            <section class="form-register">
+                <form method="post">
+                    {% csrf_token %}
+                    <h4>Registrar Doctor</h4>
+                    <div class="form-grid">
+                        <input class="controls" type="text" name="primer_apellido" placeholder="Primer apellido" required>
+                        <input class="controls" type="text" name="segundo_apellido" placeholder="Segundo apellido">
+                        <input class="controls" type="text" name="primer_nombre" placeholder="Primer nombre" required>
+                        <input class="controls" type="text" name="segundo_nombre" placeholder="Segundo nombre">
+                    </div>
+                    <input class="botons" type="submit" value="Registrar Doctor">
+                </form>
+            </section>
+        </div>
+        <div class="col-md-8">
+            <div class="container-table">
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>Primer Nombre</th>
+                            <th>Segundo Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doctor in doctores %}
+                        <tr>
+                            <td>{{doctor.primer_nombre}}</td>
+                            <td>{{doctor.segundo_nombre}}</td>
+                            <td>{{doctor.primer_apellido}}</td>
+                            <td>{{doctor.segundo_apellido}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+``
